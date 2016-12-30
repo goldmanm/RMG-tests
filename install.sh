@@ -118,13 +118,23 @@ else
   conda env create -f environment_linux.yml # name will set by the name key in the environment yaml.
 
   git checkout environment_linux.yml
+  export RMG_TESTING=`pwd`
+
+  # check out right RMG-database
+  cd ..
+  git clone https://github.com/ReactionMechanismGenerator/RMG-database.git
+  cd RMG-database
+  git checkout -b nitrogen_rebase origin/nitrogen_rebase
+  export RMGDB_TESTING=`pwd`
 
   # set the RMG environment variable:
   echo ""
-  export RMG_TESTING=`pwd`
   echo "testing version of RMG: "$RMG_TESTING
   git log --format=%H%n%cd -1
   echo ""
+
+  # go to RMG-Py
+  cd ../RMG-Py
 
   # compile RMG-Py:
   source activate testing
