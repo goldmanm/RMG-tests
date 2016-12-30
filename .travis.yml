@@ -48,3 +48,4 @@ branches:
   only:
     - /^rmgpy-.*$/
     - /^rmgdb-.*$/
+    - /^rmgpydb-.*$/
